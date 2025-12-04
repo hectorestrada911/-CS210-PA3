@@ -124,6 +124,23 @@ bool dfs(int r, int c,
          vector<vector<int>>& parent_c,
          int exit_r, int exit_c) {
     
+    // Check if coordinates are out of bounds
+    int N = maze.size();
+    int M = maze[0].size();
+    if (r < 0 || r >= N || c < 0 || c >= M) {
+        return false;
+    }
+    
+    // Check if this is a wall
+    if (maze[r][c] == 1) {
+        return false;
+    }
+    
+    // Check if we already visited this cell
+    if (visited[r][c]) {
+        return false;
+    }
+    
     // Check if we reached the exit
     if (r == exit_r && c == exit_c) {
         return true;
