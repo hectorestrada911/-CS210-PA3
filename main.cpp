@@ -141,6 +141,9 @@ bool dfs(int r, int c,
         return false;
     }
     
+    // Mark this cell as visited
+    visited[r][c] = true;
+    
     // Check if we reached the exit
     if (r == exit_r && c == exit_c) {
         return true;
