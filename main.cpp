@@ -149,6 +149,22 @@ bool dfs(int r, int c,
         return true;
     }
     
+    // Try exploring in all four directions
+    for (int i = 0; i < 4; i++) {
+        int new_r = r + dr[i];
+        int new_c = c + dc[i];
+        
+        // Only set parent if coordinates are valid
+        if (new_r >= 0 && new_r < N && new_c >= 0 && new_c < M) {
+            parent_r[new_r][new_c] = r;
+            parent_c[new_r][new_c] = c;
+        }
+        
+        if (dfs(new_r, new_c, maze, visited, parent_r, parent_c, exit_r, exit_c)) {
+            return true;
+        }
+    }
+    
     return false;
 }
 
